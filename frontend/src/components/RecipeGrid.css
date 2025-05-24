@@ -1,0 +1,114 @@
+.recipe-grid-chat {
+  margin-bottom: 0.5rem;
+}
+
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.recipe-card-chat {
+  background: #111111;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recipe-card-chat:hover {
+  border-color: #555555;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.recipe-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-info {
+  padding: 1rem;
+}
+
+.recipe-title {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.recipe-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: #cccccc;
+}
+
+.stat.missing {
+  color: #ff9999;
+}
+
+.stat.perfect {
+  color: #99ff99;
+  font-weight: 600;
+}
+
+.stat-icon {
+  font-size: 0.7rem;
+}
+
+.perfect-match {
+  background: #2a5a2a;
+  color: #99ff99;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.almost-perfect {
+  background: #4a4a2a;
+  color: #ffff99;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.new-search-button {
+  background: #333333;
+  border: 1px solid #555555;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.new-search-button:hover {
+  background: #444444;
+  border-color: #666666;
+} 
