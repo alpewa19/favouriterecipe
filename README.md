@@ -1,4 +1,8 @@
-# 🍽️ FoodList - Multimodal AI Recipe Application
+nFactorial-Ai-Cup-2025
+
+Ruslan Alpenov
+
+# 🍽️ FavouriteRecipe - Multimodal AI Recipe Application
 
 AI-powered recipe finder that suggests recipes based on your available ingredients (from photos or text input) and provides shopping links for missing ingredients.
 
