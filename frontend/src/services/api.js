@@ -31,4 +31,12 @@ export const getRecipeDetails = async (recipeId) => {
   const params = { apiKey: process.env.REACT_APP_SPOONACULAR_API_KEY };
   const res = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information`, { params });
   return res.data;
+};
+
+// Получение деталей рецепта с недостающими ингредиентами через backend
+export const getRecipeDetailsWithMissing = async (recipeId, userIngredients) => {
+  const res = await axios.get(`/api/recipe-details/${recipeId}`, {
+    params: { userIngredients }
+  });
+  return res.data;
 }; 
