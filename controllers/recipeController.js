@@ -1,4 +1,4 @@
-const { analyzeImage } = require('../services/geminiService');
+const { analyzeImage } = require('../services/moondreamService');
 const {
   findRecipesByIngredients,
   getRecipeDetails,
@@ -13,12 +13,11 @@ async function analyzeImageController(req, res) {
     if (!req.file) {
       return res.status(400).json({ error: 'No image file provided' });
     }
-
     const ingredients = await analyzeImage(req.file.buffer);
     res.json({ ingredients });
   } catch (error) {
     console.error('Error in analyzeImageController:', error);
-    res.status(500).json({ error: 'Failed to analyze image' });
+    res.status(500).json({ error: 'Failed to analyze image', details: error.message });
   }
 }
 
@@ -54,16 +53,35 @@ async function getRecipeDetailsController(req, res) {
     }
 
     const recipeDetails = await getRecipeDetails(id);
+    
+    // Log Spoonacular data for debugging
+    console.log('Spoonacular recipe details:', {
+      id: recipeDetails.id,
+      title: recipeDetails.title,
+      sourceUrl: recipeDetails.sourceUrl,
+      spoonacularUrl: recipeDetails.spoonacularUrl,
+      creditsText: recipeDetails.creditsText,
+      sourceName: recipeDetails.sourceName,
+      readyInMinutes: recipeDetails.readyInMinutes,
+      servings: recipeDetails.servings
+    });
+    
     const missingIngredients = findMissingIngredients(
       recipeDetails.extendedIngredients,
       userIngredients
     );
 
+    // Create Spoonacular recipe URL
+    const spoonacularUrl = `https://spoonacular.com/recipes/${recipeDetails.title.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '-').toLowerCase()}-${recipeDetails.id}`;
+    console.log('Created Spoonacular link:', spoonacularUrl);
+
     const response = {
       id: recipeDetails.id,
       title: recipeDetails.title,
       imageUrl: recipeDetails.image,
-      recipeUrl: recipeDetails.sourceUrl,
+      spoonacularUrl: spoonacularUrl,
+      creditsText: recipeDetails.creditsText,
+      sourceName: recipeDetails.sourceName,
       fullIngredients: recipeDetails.extendedIngredients.map(ing => ({
         original: ing.original,
         name: ing.name

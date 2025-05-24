@@ -19,6 +19,7 @@ const upload = multer({ storage: storage });
 
 // Routes
 app.use('/api', require('./routes/recipeRoutes'));
+app.use('/api', require('./routes/api'));
 
 // Basic error handling middleware
 app.use((err, req, res, next) => {
