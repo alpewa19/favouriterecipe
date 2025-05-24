@@ -1,6 +1,6 @@
-nFactorial-Ai-Cup-2025
+# nFactorial-Ai-Cup-2025
 
-Ruslan Alpenov
+# Ruslan Alpenov
 
 # 🍽️ FavouriteRecipe - Multimodal AI Recipe Application
 
