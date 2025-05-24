@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: recipe-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: SPOONACULAR_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY  
+        sync: false
+    scaling:
+      minInstances: 1
+      maxInstances: 3 

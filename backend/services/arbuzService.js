@@ -11,18 +11,30 @@ class ArbuzService {
     if (!this.driver) {
       const options = new chrome.Options();
       
-      if (!this.debug) {
+      // Always run headless in production/Docker
+      if (!this.debug || process.env.NODE_ENV === 'production') {
         options.addArguments('--headless');
       }
       
+      // Essential arguments for Docker/Linux environment
       options.addArguments('--no-sandbox');
       options.addArguments('--disable-dev-shm-usage');
       options.addArguments('--disable-gpu');
+      options.addArguments('--disable-features=VizDisplayCompositor');
       options.addArguments('--window-size=1920,1080');
       options.addArguments('--disable-web-security');
       options.addArguments('--allow-running-insecure-content');
       options.addArguments('--disable-blink-features=AutomationControlled');
-      options.addArguments('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+      options.addArguments('--disable-extensions');
+      options.addArguments('--disable-plugins');
+      options.addArguments('--disable-images'); // Speed up by not loading images
+      options.addArguments('--disable-javascript'); // We don't need JS for scraping
+      options.addArguments('--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+      
+      // Set Chrome binary path (important for Docker)
+      if (process.env.NODE_ENV === 'production') {
+        options.setChromeBinaryPath('/usr/bin/google-chrome');
+      }
       
       this.driver = await new Builder()
         .forBrowser('chrome')
