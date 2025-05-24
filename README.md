@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Favorite Recipe Backend
 
 This is the backend service for the Favorite Recipe application, which helps users find recipes based on their available ingredients.
@@ -100,3 +101,19 @@ All endpoints return appropriate HTTP status codes and error messages in case of
   "error": "Error message"
 }
 ``` 
+=======
+# nFactorial-Ai-Cup-2025
+Fork this repository and build nFactorial Ai Cup 2025 projects 
+
+## < Your Name >
+
+## < Your App's Name >
+
+## < Your App's description, technical considerations, etc. >
+
+
+## Typeform to submit:
+https://docs.google.com/forms/d/e/1FAIpQLSdjbTZXt-8P0OTyMEDTQDszE-YGI5KcLYsN6pwxHmX0Fa3tzg/viewform?usp=dialog
+
+## DEADLINE: 25/05/2025 10:00
+>>>>>>> 0b3cb795807cdef38574afc4cbf6687e0ed6b406
